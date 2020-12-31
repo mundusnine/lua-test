@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Launch Lua",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/build/Debug/lua-test",
+            "preLaunchTask": "Lua: Debug Build",
+            "externalConsole": true,
+            "cwd": "${workspaceFolder}/build/Debug",
+            "args": []
+        },
+        {
+            "name": "Kinc: Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/home/jsnadeau/Documents/repos/lua-test/Deployment/lua-test",
+            "cwd": "/home/jsnadeau/Documents/repos/lua-test/Deployment",
+            "preLaunchTask": "Kinc: Build for Linux"
+        }
+    ],
+    "compounds": []
+}
