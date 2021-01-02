@@ -6,6 +6,7 @@
                 "${workspaceFolder}/Libraries/minilua"
             ],
             "defines": [
+                "LUA_IMPL"
             ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",

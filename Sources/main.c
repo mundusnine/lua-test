@@ -1,5 +1,4 @@
 
-#define LUA_IMPL
 #include "minilua.h"
 
 int main(int argc, char** argv) {
