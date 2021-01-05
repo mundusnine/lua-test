@@ -4,10 +4,10 @@
             "name": "Launch Lua",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/build/Debug/lua-test",
+            "program": "${workspaceRoot}/Deployment/lua-test",
             "preLaunchTask": "Lua: Debug Build",
             "externalConsole": true,
-            "cwd": "${workspaceFolder}/build/Debug",
+            "cwd": "${workspaceFolder}/Deployment",
             "args": []
         },
         {

@@ -7,3 +7,6 @@
 [submodule "Libraries/minilua"]
 	path = Libraries/minilua
 	url = https://github.com/edubart/minilua.git
+[submodule "Libraries/tl"]
+	path = Libraries/tl
+	url = https://github.com/teal-language/tl.git
