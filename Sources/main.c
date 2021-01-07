@@ -1,61 +1,38 @@
-
 #include <stdio.h>
-#include "minilua.h"
-#include<string.h>
 #include <assert.h>
-// #include "api/api.h
+#include <time.h>
+
+#include "api/api.h"
+#include "teal.h"
+#include "str.h"
+#include "lua.h"
 
 int main(int argc, char** argv) {
 	lua_State *L = luaL_newstate();
-	if(L == NULL)
-		return -1;
+	double time_spent = 0.0;
 	luaL_openlibs(L);
-	// api_load_libs(L);
+	api_load_libs(L);
 
+	teal_init(L);
 
-	printf("Lua return %i\n",luaL_loadfile(L,"tlexec.lua"));
-	lua_pcall(L,0,-1,0);
-	lua_getglobal(L,"tl");
-	printf("Type is: %s\n",lua_typename(L,lua_type(L,-1)));
+	
 
-	assert(lua_istable(L,-1));
-	lua_pushstring(L,"init_env");
-	lua_gettable(L,-2);
+	teal_process(L);
 
-	if(lua_isfunction(L,-1))
-	{
+	clock_t begin = clock();
+	
+	teal_gen_lua(L);
 
-		lua_pushboolean(L,0);
-		lua_pushboolean(L,0);
-		int numArgs = 2;
-		int numRet = 1;
-		lua_pcall(L,numArgs,numRet,0);
-		void* test = lua_touserdata(L,-1);
+	clock_t end = clock();
 
-		lua_pushstring(L,"process");
-		lua_gettable(L,-2);
-		lua_pushstring(L,"tl.tl");
-		lua_pushlightuserdata(L,test);
-		lua_pushnil(L);
-		lua_pushnil(L);
-
-		numArgs = 4;
-		numRet = 2;
-		lua_pcall(L,numArgs,numRet,0);
-
-		if(lua_istable(L,-2)){
-			test = lua_touserdata(L,-2);
-			
-			printf("It worked\n");
-		}
-		else {
-			printf("%s",lua_tostring(L,-1));
-		}
-
-	}
-	else {
-		printf("What up man !");
-	}
+	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("Time elpased is %f seconds", time_spent);
+	
+	teal_shutdown();
 	lua_close(L);
 	return 0;
 }
+
+
+

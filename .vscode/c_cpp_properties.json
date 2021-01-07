@@ -3,11 +3,10 @@
         {
             "name": "Linux",
             "includePath": [
+                "${workspaceFolder}/Sources",
                 "${workspaceFolder}/Libraries/minilua"
             ],
-            "defines": [
-                "LUA_IMPL"
-            ],
+            "defines": [],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
             "cppStandard": "c++17",
